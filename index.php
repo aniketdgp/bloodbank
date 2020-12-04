@@ -1,6 +1,4 @@
-<?php
-require_once './db/getusertype.php';
-?>
+
 <html>
   <head>
     <title>Blood Bank</title>
@@ -21,57 +19,8 @@ require_once './db/getusertype.php';
 </head>
 
     <body>
-
-        <!--NAVBAR START-->
-          <?php 
-        
-         
-              if ($usertype == 'hospital') {
-                    require_once './assets/components/hospital/navbar_hospital.php';
-                                             } 
-            else if($usertype == 'receiver') {
-                    require_once './assets/components/receiver/navbar_receiver_index.php';
-                    }
-             else{
-                  require_once './assets/components/default/navbar_default_index.php';
-             }       
-     
-        
-            ?>
-        
-            ?>
-          <!--NAVBAR END-->
-        
-          
-          <div id="home" class="home">
-              
-              <center>
-                  
-              <?php 
-               if (isset($_SESSION['email'])) {
-                    require_once './assets/components/hospital/hospital_index_body.php';
-               } else {
-                   require_once './assets/components/default/default_index_body.php';
-               }
-              
-               
-              
-              
-              ?>
-   
-                  
-              </center>
-           
-              
-          </div>
-
-       
-
+        <?php echo "jsjjs"; ?>
     </body>
-
-
-    
-<?php require_once './assets/components/footer.php';?>
 
 
 </html>
