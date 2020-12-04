@@ -25,14 +25,15 @@
   $select_query_result=mysqli_query($con,$result)or die(mysqli_error($con));
   $row= mysqli_fetch_array($select_query_result);
   
+  $password_encrypted= md5($password);
   
    $email_data=$row['email'];
-   $password_data= $row['password'];
+   $password_data= $row['passwordt'];
 
   
   
  
-  if($email==$email_data && $password==$password_data){
+  if($email==$email_data && $password_encrypted==$password_data){
   // echo "welcome. ".$name_data;
      session_start();
   // Store Session Data

@@ -8,16 +8,28 @@
   $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_SPECIAL_CHARS);
  
 
+   $result = "SELECT * from hospital WHERE email='$email'";
+   $select_query_result=mysqli_query($con,$result)or die(mysqli_error($con));
+   $row= mysqli_fetch_array($select_query_result);
+   $email_data=$row['email'];
 
 
-
- // $password_encrypted= md5($password);
+    $password_encrypted= md5($password);
   
-  $user_registration_query="insert into hospital(hospitalname,email,hospitaltype,password)values ('$hospitalname','$email','$hospitaltype','$password')";
-  $user_registration_submit = mysqli_query($con, $user_registration_query) or die(mysqli_error($con));
-  
+   
+   if(isset($email_data)){
+       $responsem = "Email ID Already Registerd";
+         header('refresh:5;url=../Register.php');
+   }else{
+       $user_registration_query="insert into hospital(hospitalname,email,hospitaltype,passwordt)values ('$hospitalname','$email','$hospitaltype','$password_encrypted')";
+       $user_registration_submit = mysqli_query($con, $user_registration_query) or die(mysqli_error($con));
+       $responsem = "Use Your email and password to login";
+       header('refresh:5;url=../login.php');
+   }
+   
+ 
 
-    header('refresh:5;url=../login.php');
+    
  
  ?>
 
@@ -52,11 +64,13 @@
         
        
          <center>
-         <h3>Use Your email and password to login</h3>
+         <h3><?php echo $responsem ?></h3>
+         <?php  if(!isset($email_data)){?>
          <h4>Thanks for signing up</h4>
          <br>
          <br>
-         <a href="../login.php" class="btn btn-danger btn-outline">Login</a>    
+         <a href="../login.php" class="btn btn-danger btn-outline">Login</a>
+         <?php } ?>
          </center>
 
     </div>   

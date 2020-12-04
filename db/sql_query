@@ -1,10 +1,10 @@
 Create Table For Register
 
 Hospital 
-create table hospital(id int AUTO_INCREMENT PRIMARY KEY,hospitalname varchar(200),email varchar(200),hospitaltype varchar(200), password varchar(200));
+create table hospital(id int AUTO_INCREMENT PRIMARY KEY,hospitalname varchar(200),email varchar(200),hospitaltype varchar(200), passwordt varchar(200));
 
 Receiver
-CREATE TABLE receiver(id int AUTO_INCREMENT PRIMARY KEY,fullname varchar(200),email varchar(200),bloodgroup varchar(10),password varchar(200));
+CREATE TABLE receiver(id int AUTO_INCREMENT PRIMARY KEY,fullname varchar(200),email varchar(200),bloodgroup varchar(10),passwordt varchar(200));
 
 Add Blood
 create table addblood(id int AUTO_INCREMENT PRIMARY KEY,hospitalname varchar(200),bloodgroup varchar(10),bc int(100),doi varchar(200),email varchar(200));
