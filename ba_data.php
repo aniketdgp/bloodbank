@@ -1,7 +1,4 @@
-<!--Content Section-->
-        
- <!--Connection Established Here-->
-         <?php 
+<?php 
         
           require './db/db_con.php'; 
           require_once './db/getusertype.php';
@@ -11,7 +8,7 @@
           $select_query_result=mysqli_query($con,$select_query)or die(mysqli_error($con));
           
               
-            ?>
+?>
 
  <html>
   <head>
@@ -73,7 +70,7 @@
                </select>    
                                
                  <div class="form-group search_btn">
-                     <button type="submit" class="btn btn-danger">Search</button>
+                     <button type="submit" class="btn btn-danger btnsearch">Search</button>
 
                  </div>
                 
@@ -102,20 +99,26 @@
         ?>
         
       <tr>
-           <?php require_once './assets/components/requestblood_s.php';?>
           
-          <td><p class="text"><?php echo $row['hospitalname']?></p></td>
-          <td><p class="text"><?php echo $row['bc']?></p></td>
-          <td> 
+          <td><p class="text"><?php echo $row['hospitalname']; ?></p></td>
+          <td><p class="text"><?php echo $row['bc']; ?></p></td>
+          
+         
+          <td>
+              
               <?php if($usertype == "receiver"){ ?>
-              <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#requestBloodModal">
-              <p class="text">
-                      Request For <?php echo $row['bloodgroup'];
-                      $_SESSION['hospitalemail']=$row['email'];
-                      $_SESSION['bg'] = $row['bloodgroup'];      
-                      ?>
-              </p>
-              </button>  
+              
+            
+              
+              <form method="post" action="./assets/components/requestblood_s.php">
+                  
+                   <input type="hidden" name="emailhospital" id="emailhospital" value="<?php echo $row['email']; ?>"/>
+                   <input type="hidden" name="bloodgroup" id="bloodgroup" value="<?php echo $row['bloodgroup']; ?>"/>
+                   <button type="submit" class="btn btn-danger"> <p class="text">Request For <?php echo $row['bloodgroup'];?></p></button>
+                  
+              </form>    
+            
+              
               <?php }else{ ?>
               <button type="submit" class="btn btn-danger" onclick="signin()">
               <p class="text">
@@ -183,12 +186,17 @@
          
          /*Desktops*/
          @media only screen and (min-width: 601px) {
-             
+          
+         html{
+           overflow: visible;
+         }
+         
          .data_ba{
              margin-top: 150px;
-             margin-bottom: 80px;
+             padding-bottom: 80px;
              
          }
+        
          
          .btn{
              height: 40px;
@@ -201,11 +209,24 @@
          
          /*Mobiles*/
         @media only screen and (max-width: 600px) {
+        
+         html{
+           overflow: visible;
+         }
+         
+         .btnsearch{
+         padding:3px;
+         }
             
          .data_ba{
              margin-top: 100px;
-             margin-bottom: 60px;
-              max-width: 100vh;
+             padding-bottom: 80px;
+             max-width: 100vh;
+             
+         }
+         ::-webkit-scrollbar {
+            width: 0px; 
+            background: transparent;
          }
          .container{
              margin-left: 0px;
@@ -227,6 +248,11 @@
          
          
      </style> 
+     
+     
+     
+
+     
      
     </body>
 

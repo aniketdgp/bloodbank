@@ -1,4 +1,3 @@
-
 <?php
 
 
@@ -17,8 +16,8 @@
       header('refresh:4;url=../bloodavailability.php');
   }else{
   $bc = filter_input(INPUT_POST, 'bc', FILTER_SANITIZE_SPECIAL_CHARS);
-  $bloodgroup = $_SESSION['bg'];
-  $emailhospital = $_SESSION['hospitalemail'];
+  $bloodgroup = filter_input(INPUT_POST, 'bloodgroup', FILTER_SANITIZE_SPECIAL_CHARS);
+  $emailhospital = filter_input(INPUT_POST, 'emailhospital', FILTER_SANITIZE_SPECIAL_CHARS);
   $user_registration_query="insert into requestblood(bc,emailhospital,receiveremail,bloodgroup) values ('$bc','$emailhospital','$recevieremail','$bloodgroup')";
   $user_registration_submit = mysqli_query($con, $user_registration_query) or die(mysqli_error($con));
   header('refresh:4;url=../bloodavailability.php');

@@ -118,10 +118,17 @@ $select_query_result=mysqli_query($con,$select_query)or die(mysqli_error($con));
          /*Desktops*/
          @media only screen and (min-width: 601px) {
              
+          html{
+           overflow: visible;
+         }
+                
          .data_ba{
              margin-top: 150px;
-             margin-bottom: 80px;
-             
+             padding-bottom: 80px; 
+         }
+         ::-webkit-scrollbar {
+            width: 0px; 
+            background: transparent;
          }
          
          .btn{
@@ -136,11 +143,21 @@ $select_query_result=mysqli_query($con,$select_query)or die(mysqli_error($con));
          /*Mobiles*/
         @media only screen and (max-width: 600px) {
             
+          html{
+           overflow: visible;
+         }
+              
          .data_ba{
              margin-top: 100px;
-             margin-bottom: 60px;
-              max-width: 100vh;
+             padding-bottom: 80px;
+             max-width: 100vh;
+            
          }
+         ::-webkit-scrollbar {
+            width: 0px; 
+            background: transparent;
+         }
+             
          .container{
              margin-left: 0px;
              margin-right: 0px;

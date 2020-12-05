@@ -31,7 +31,7 @@
   if($value>=0){
       $response_message = "Request Approved & Supplies Updated";
       $uv = $available_blood-$requested_blood;
-      $uv_query="update addblood set bc = '$uv' where bloodgroup = '$bloodgroup'";
+      $uv_query="update addblood set bc = '$uv' where bloodgroup = '$bloodgroup' and email='$email'";
       $uv_submit = mysqli_query($con, $uv_query) or die(mysqli_error($con));
       //deleterequest
       $delete = "DELETE FROM requestblood WHERE receiveremail='$receiveremail'";
